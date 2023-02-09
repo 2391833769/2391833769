@@ -1,3 +1,31 @@
+<template>
+  <div class="home">
+    <div class="home_header">
+      <span>弘源旅途</span>
+    </div>
+    <div class="home_img">
+      <img src="@/assets/img/home/banner.webp" alt="">
+    </div>
+    <div class="home_location">
+      <div class="location_city">广州</div>
+      <div class="location_mark" @click="locationClick">
+        <span>我的位置</span>
+        <img src="@/assets/img/home/icon_location.png" alt="">
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+
+const locationClick = () => {
+  navigator.geolocation.getCurrentPosition(res => {
+    console.log(res)
+  })
+}
+</script>
+
+
 <style lang='less' scoped >
   .home {
 
@@ -46,25 +74,3 @@
     }
   }
 </style>
-
-<template>
-  <div class="home">
-    <div class="home_header">
-      <span>弘源旅途</span>
-    </div>
-    <div class="home_img">
-      <img src="@/assets/img/home/banner.webp" alt="">
-    </div>
-    <div class="home_location">
-      <div class="location_city">广州</div>
-      <div class="location_mark">
-        <span>我的位置</span>
-        <img src="@/assets/img/home/icon_location.png" alt="">
-      </div>
-    </div>
-  </div>
-</template>
-
-<script setup>
-
-</script>

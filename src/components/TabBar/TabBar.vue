@@ -1,3 +1,37 @@
+<template>
+  <div class='tab_bar'>
+    <ul class="app">
+      <li v-for="(item, index ) in tabData">
+        <RouterLink 
+          :to="item.to" 
+          class="router_link"
+          :class="{ active: currIndex === index }"
+          @click="tabClick(index)"
+        >
+          <img :src="currIndex === index ? loadImg(item.active_src) : loadImg(item.img_src)">
+          {{ item.text }}
+        </RouterLink>
+      </li>
+    </ul>
+  </div>
+</template>
+
+
+<script setup>
+  import { ref } from 'vue';
+
+  import tabData from '@/assets/data/tab_bar_data';
+  import loadImg from '@/utils/load_img'
+
+  const currIndex = ref(0)
+  
+  const tabClick = (index) => {
+    currIndex.value = index;
+  }
+
+</script>
+
+
 <style lang='less'>
   .tab_bar {
     height: 100%;
@@ -34,37 +68,3 @@
     }
   }
 </style>
-
-<template>
-  <div class='tab_bar'>
-    <ul class="app">
-      <li v-for="(item, index ) in tabData">
-        <RouterLink 
-          :to="item.to" 
-          class="router_link"
-          :class="{ active: currIndex === index }"
-          @click="tabClick(index)"
-        >
-          <img :src="currIndex === index ? loadImg(item.active_src) : loadImg(item.img_src)">
-          {{ item.text }}
-        </RouterLink>
-      </li>
-    </ul>
-  </div>
-</template>
-
-
-<script setup>
-  import { ref } from 'vue';
-
-  import tabData from '@/assets/data/tab_bar_data';
-  import loadImg from '@/utils/load_img'
-
-  const currIndex = ref(0)
-  
-  const tabClick = (index) => {
-    console.log(currIndex)
-    currIndex.value = index;
-  }
-
-</script>
