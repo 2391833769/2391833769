@@ -18,5 +18,18 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  server: {
+    open: true, // 设置服务启动时是否自动打开浏览器
+    cors: true, // 允许跨域
+    proxy: { // 配置跨域
+      '/store': {
+        // target: 'http://my.mcdd.top:9527/',
+        target: 'http://api.map.baidu.com', // 根据需求替换 请求后台接口
+        changeOrigin: true, // 允许跨域
+        ws: true,
+        rewrite: (path) => path.replace(/^\/store/, '') // 重写请求
+    }
+    }
   }
 })

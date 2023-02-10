@@ -17,12 +17,28 @@
 </template>
 
 <script setup>
+  import axios from 'axios';
 
-const locationClick = () => {
-  navigator.geolocation.getCurrentPosition(res => {
-    console.log(res)
-  })
-}
+  import {jsonp} from 'vue-jsonp';
+
+  import { useRouter } from 'vue-router';
+  
+  const router = useRouter();
+
+  //获取地理位置
+  const locationClick = () => {
+    router.push('/city');
+    navigator.geolocation.getCurrentPosition(res => {
+      //获取经度和维度
+      const lat = res.coords.latitude;
+      const long = res.coords.longitude;
+      //使用axios获取城市信息
+      axios.get(`store/geocoder?output=json&location=${lat},${long}&ak=esNPFDwwsXWtsQfw4NMNmur1`)
+      .then(res => {
+        console.log(res.data.result.formatted_address)
+      })
+    })
+  }
 </script>
 
 
