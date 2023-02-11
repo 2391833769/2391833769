@@ -4,6 +4,10 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
+      path: '/',
+      redirect: '/home'
+    },
+    {
       path: '/home',
       component: () => import('@/views/home/Home.vue')
     },
@@ -19,6 +23,13 @@ const router = createRouter({
       
       path: '/message',
       component: () => import('@/views/message/Message.vue')
+    },
+    {
+      path: '/city',
+      component: () => import('@/views/city/City.vue'),
+      meta: {
+        hiddenBar: true
+      }
     }
   ]
 });

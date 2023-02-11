@@ -7,12 +7,12 @@ const tabData = [
   },
   {
     to: '/favor',
-    text: '首页',
+    text: '收藏',
     img_src: 'tabbar/tab_favor.png',
     active_src: 'tabbar/tab_favor_active.png'
   },
   {
-    to: '/home',
+    to: '/order',
     text: '订单',
     img_src: 'tabbar/tab_order.png',
     active_src: 'tabbar/tab_order_active.png'

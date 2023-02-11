@@ -1,7 +1,28 @@
+
+<template>
+  <div class="app">
+    <RouterView/>
+    <div class="bottom"  v-if="!route.meta.hiddenBar">
+      <TabBar/>
+    </div>
+  </div>
+  
+</template>
+
+<script setup>
+  import { ref } from 'vue'
+  import TabBar from '@/components/TabBar/TabBar.vue';
+import { useRoute } from 'vue-router';
+
+  const active = ref(0);
+
+  const route = useRoute();
+  // document.body.style.overflow = 'hidden';
+  // document.body.style.overflowY = 'true'
+</script>
+
 <style lang='less' scoped >
   .app {
-    // position: relative;
-    margin-bottom: 50px;
     overflow: hidden;
     // background-color: red;
 
@@ -18,26 +39,4 @@
         border-top: 1px solid black;
       }
   }
-
-  
-  
 </style>
-
-<template>
-  <div class="app">
-    <RouterView/>
-    <div class="bottom">
-      <TabBar/>
-    </div>
-  </div>
-  
-</template>
-
-<script setup>
-  import { ref } from 'vue'
-  import TabBar from '@/components/TabBar/TabBar.vue';
-
-  const active = ref(0)
-  // document.body.style.overflow = 'hidden';
-  // document.body.style.overflowY = 'true'
-</script>

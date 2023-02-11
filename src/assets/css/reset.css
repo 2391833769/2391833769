@@ -1,3 +1,9 @@
+:root {
+  --primary-color: #ff9854;
+
+  --van-search-left-icon-color: var(--primary-color) !important;
+}
+
 body, h1, h2, h3, h4, ul, li {
   padding: 0;
   margin: 0;
@@ -15,3 +21,4 @@ a {
 img {
   vertical-align: top;
 }
+
