@@ -12,7 +12,7 @@
 <script setup>
   import { ref } from 'vue'
   import TabBar from '@/components/TabBar/TabBar.vue';
-import { useRoute } from 'vue-router';
+  import { useRoute } from 'vue-router';
 
   const active = ref(0);
 
