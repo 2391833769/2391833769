@@ -28,6 +28,7 @@
 <script setup>
   import { ref, computed } from 'vue';
   import { formatDate, calculateDays } from '@/utils/format_date';
+  import { defineEmits } from 'vue';
 
   //设置Claendar状态
   const showCalendar = ref(false);
@@ -37,10 +38,12 @@
   const startDay = ref(formatDate(dateObj));
   const endDay = ref(formatDate(dateObj.getTime() + 24*60*60*1000));
   const allDay = ref(1);
+  emit('selectDate', startDay.value, endDay.value);
   //日期选择面板点击事件
   const dateClick = () => {
     showCalendar.value = true;
   }
+  const emit = defineEmits(['selectDate']);
 
   //日期面板确认事件
   const onConfirm = (value) => {
@@ -50,8 +53,12 @@
     endDay.value = formatDate(end);
     allDay.value = calculateDays(start, end);
     showCalendar.value = false;
-   
+
+    emit('selectDate', startDay.value, endDay.value);
   }
+
+  
+
 </script>
 
 
@@ -87,6 +94,7 @@
         width: 33.3%;
       }
       
+
     }
     .grey {
       color: #cececd;

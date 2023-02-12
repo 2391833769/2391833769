@@ -6,16 +6,36 @@
       </li>
     </ul>
   </div>
+  <div class="search_bar">
+    <div class="search" @click="searchBarClick">开始搜索</div>
+  </div>
 </template>
 
 
 <script setup>
-  defineProps({
-    hotData: {
-      type: Array,
-      default: () => []
-    }
-  })
+import { useRouter } from 'vue-router';
+
+  const router = useRouter();
+
+  //定义传入属性
+  const props = defineProps({
+    hotData: Array,
+    startDay: String,
+    endDay: String
+  });
+
+  //定义搜索按钮事件
+  const searchBarClick = () => {
+    console.log(props.startDay)
+    router.push({
+      path: '/search',
+      query: {
+        startDay: props.startDay,
+        endDay: props.endDay
+      }
+    })
+  }    
+  
 </script>
 
 
@@ -36,6 +56,19 @@
         padding: 5px;
         margin: 5px;
       }
+    }
+  }
+  .search_bar {
+    margin: 15px;
+    .search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
+      font-size: 20px;
+      color: whitesmoke;
+      border-radius: 20px;
+      background-image: linear-gradient(90deg, #ff8f1a, #ffae37);
     }
   }
 </style>

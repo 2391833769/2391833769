@@ -85,7 +85,7 @@
 
         span {
           padding: 10px 10px;
-          width: 50px;
+          width: 70px;
           background-color: #fbf1e9;
           border-radius: 20px;
           text-align: center;

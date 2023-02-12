@@ -1,6 +1,7 @@
 <template>
   <div class='city'>
-    <div class="city_top">
+    <template v-if="cityData['cityGroup']">
+      <div class="city_top">
       <van-search 
         v-model="inputValue" 
         placeholder="请输入搜索关键词"
@@ -9,7 +10,7 @@
         @cancel="cancelClick"
         @clear="clearClick"
       > 
-      </van-search>
+      </van-search>    
       <van-tabs v-model:active="active" color="#ff7854" >
         <template v-for="(value, key) in cityData">
           <van-tab 
@@ -29,6 +30,12 @@
       </div>
       
     </div>
+    </template>
+    <template v-else>
+      <div class="load">
+        <van-loading type="spinner" />
+      </div>
+    </template>
   </div>
 </template>
 
@@ -79,6 +86,10 @@
       height: calc(100vh - 100px);
       // overflow: hidden;
       overflow-y: auto;
+    }
+
+    .load {
+      text-align: center;
     }
   }
  
